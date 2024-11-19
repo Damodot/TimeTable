@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/js/bootstrap.bundle.js">
+    <title>Document</title>
+</head>
+<body>
+    <main class="p-3 shadow w-50 rounded m-auto">
+        <section class="w-50 m-auto">
+            <h1>Time Table Generator</h1>
+            <div class="secont d-flex">
+                <div class="first mt-4">
+                    <h4 class="ms-4">Starting From:</h4>
+                    <h4 class="ms-4 mt-3">Ends At:</h4>
+                </div>
+                <div class="first mt-4">
+                    <input type="text" class="form-control  ms-4" id="valueOne">
+                    <input type="text" class="form-control ms-4 mt-3" id="valueTwo">
+                </div>
+            </div>
+            <button class="btn btn-primary mt-3" onclick="generate()">Generate</button> 
+        </section>
+        <div id="reply" class="mt-4 m-auto">
+            <div class="divOne"></div>
+        </div>
+    </main>
+</body>
+</html>
+<script>
+    function generate() {
+        let valueOnce = document.getElementById('valueOne')
+        let valueDuos = document.getElementById('valueTwo')
+        let output = document.querySelector('.divOne')
+        
+        let start = Number(valueOnce.value)
+        let end = Number(valueDuos.value)
+
+        output.innerHTML = ''
+
+        if (valueOnce.value === '' || valueDuos.value === '') {
+            alert('Please Fill All Fields')
+          
+        } else if (start < end) {
+            for (let index = start; index <= end; index++) {
+                output.innerHTML += `<h3>${index} Times Table</h3>`
+
+                for (let i = 0; i <= 12; i++ ) {
+                    output.innerHTML += `<h6>${index} x ${i} = ${index * i}</h6>`
+                }
+                
+                output.innerHTML += `<hr>`
+            }
+        } else {
+            for (let index = start; index >= end; index--) {
+                output.innerHTML += `<h3>${index} Times Table</h3>`
+
+                for (let i = 0; i <= 12; i++ ) {
+                    output.innerHTML += `<h6>${index} x ${i} = ${index * i}</h6>`
+                }
+                
+                output.innerHTML += `<hr>`
+            }
+        }
+    }
+</script>
